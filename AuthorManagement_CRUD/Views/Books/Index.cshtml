@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AuthorManagement_CRUD.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card mt-4">
+    <div class="card-header bg-info text-white">
+        <h2>Book List</h2>
+    </div>
+    <div class="card-body">
+        <div class="d-flex justify-content-end mb-2">
+            <a asp-action="Create" asp-controller="Books" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New</a>
+        </div>
+
+        <table class="table table-bordered table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.BookId)</th>
+                    <th>@Html.DisplayNameFor(x => x.BookName)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => item.BookId)</td>
+                        <td>@Html.DisplayFor(x => item.BookName)</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.BookId" asp-controller="Books" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.BookId" asp-controller="Books" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

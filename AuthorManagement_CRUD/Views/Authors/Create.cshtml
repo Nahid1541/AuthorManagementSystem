@@ -1,0 +1,96 @@
+﻿@model AuthorManagement_CRUD.Models.ViewModel.AuthorViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="card mt-4">
+    <div class="card-header bg-info text-white mb-2">
+        <h1 class="display-5">Add New Author</h1>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" asp-controller="Authors" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="row mb-2">
+                        <label asp-for="AuthorName" class="col-form-label col-2">Author Name</label>
+                        <div class="col-6">
+                            <input type="text" asp-for="AuthorName" class="form-control" />
+                        </div>
+                        <div class="col-4">
+                            <span asp-validation-for="AuthorName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <label asp-for="DateOfBirth" class="col-form-label col-2">Date of Birth</label>
+                        <div class="col-6">
+                            <input type="date" asp-for="DateOfBirth" class="form-control" />
+                        </div>
+                        <div class="col-4">
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <label asp-for="Age" class="col-form-label col-2">Age</label>
+                        <div class="col-6">
+                            <input type="text" asp-for="Age" class="form-control" />
+                        </div>
+                        <div class="col-4">
+                            <span asp-validation-for="Age" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <label asp-for="ImageFile" class="col-form-label col-2">Image</label>
+                        <div class="col-6">
+                            <input type="file" asp-for="ImageFile" class="form-control" />
+                        </div>
+                        <div class="col-4">
+                            <span asp-validation-for="ImageFile" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <label asp-for="MaritalStatus" class="col-form-label col-2">Marital Status</label>
+                        <div class="col-6 mt-2">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="MaritalStatus" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <h2 class="display-6 alert alert-light">Select Book</h2>
+                    <div class="d-flex justify-content-end mb-2">
+                        <a href="#" id="btnPlus" class="btn btn-warning" style="margin-right: 2px;"><i class="fa fa-plus"></i></a>
+                    </div>
+                    <div id="bookContainer">
+                        <script>
+                            LoadData();
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <input type="submit" value="Save" class="btn btn-success mt-2" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index"><i class="fa fa-arrow-circle-left"></i> Back to list</a>
+</div>
+
+@section scripts{
+    <script src="~/lib/validation/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/validation/jquery.validate.js"></script>
+}
+
+

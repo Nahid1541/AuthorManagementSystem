@@ -1,0 +1,109 @@
+﻿@model IEnumerable<AuthorManagement_CRUD.Models.Author>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card mt-4">
+    <div class="card-header bg-info text-white">
+        <h2>Author Information</h2>
+    </div>
+    <div class="card-body">
+        <div class="d-flex justify-content-end mb-2">
+            <a asp-action="Create" asp-controller="Authors" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New</a>
+        </div>
+
+        @foreach (var author in Model)
+        {
+            <div class="card mb-2 mt-2">
+                <div class="card-header d-flex justify-content-between">
+                    <div>
+                        <img src="@author.Image" width="33" height="32" />
+                        <label class="me-2"><b>Author : </b>@Html.DisplayFor(x => author.AuthorName)</label>
+                        <label class="me-2"><b>Age : </b>@Html.DisplayFor(x => author.Age)</label>
+                        <label class="me-2"><b>Date of Birth : </b>@Html.DisplayFor(x => author.DateOfBirth)</label>
+                    </div>
+                    <div>
+                        <a asp-action="Edit" asp-route-id="@author.AuthorId" asp-controller="Authors" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                        <a asp-action="Delete" asp-route-id="@author.AuthorId" asp-controller="Authors" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th>Book Id</th>
+                                <th>Book Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in author.AuthorBooks)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(x => item.Book.BookId)</td>
+                                    <td>@Html.DisplayFor(x => item.Book.BookName)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+@* @model IEnumerable<AuthorManagement_CRUD.Models.Author>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 >Author Information</h2>
+
+<div class="d-flex justify-content-end mb-2">
+    <a asp-action="Create" asp-controller="Authors" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New</a>
+</div>
+
+<div>
+    @foreach (var author in Model)
+    {
+        <div class="card mb-2 mt-2">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <img src="@author.Image" width="33" height="32" />
+                    <label class="me-2"><b>Author : </b>@Html.DisplayFor(x => author.AuthorName)</label>
+                    <label class="me-2"><b>Age : </b>@Html.DisplayFor(x => author.Age)</label>
+                    <label class="me-2"><b>Date of Birth : </b>@Html.DisplayFor(x => author.DateOfBirth)</label>
+                </div>
+                <div>
+                    <a asp-action="Edit" asp-route-id="@author.AuthorId" asp-controller="Authors" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                    <a asp-action="Delete" asp-route-id="@author.AuthorId" asp-controller="Authors" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <th>Book Id</th>
+                            <th>Book Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in author.AuthorBooks)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(x => item.Book.BookId)</td>
+                                <td>@Html.DisplayFor(x => item.Book.BookName)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+ *@
